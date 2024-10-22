@@ -342,7 +342,6 @@ pub(crate) fn tss_enrichment<'py>(
         None => HashSet::new(), 
     };
     let tss = preprocessing::read_tss(utils::open_file_for_read(gtf_file))
-        .unique()
         .filter(|(chr, _, _)| !exclude_chroms.contains(chr));
     let promoters = preprocessing::TssRegions::new(tss, 2000);
 
